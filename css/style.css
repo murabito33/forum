@@ -1,0 +1,8 @@
+p{
+  margin:0;
+}
+
+form p, form input, form button { /* form改行 */
+  display: block;
+  margin-bottom: 10px; 
+}

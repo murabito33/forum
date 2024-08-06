@@ -8,5 +8,6 @@
 </head>
 <body>
   <header>
-
+    <p>名前</p>
+    <p>ログアウト</p>
   </header>

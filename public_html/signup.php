@@ -2,19 +2,16 @@
 
   <main>
     <div class="wrapper">
-      <h1>スレッド作成</h1>
-      
+      <h1>ユーザー作成</h1>
+
       <form action="" method="post">
-        <p>タイトル</p>
+        <p>ユーザー名</p>
         <input name="user_name" type="text">
-        <p>名前</p><!-- 固定する -->
+        <p>メールアドレス</p>
         <input name="email" type="text">
-        <p>投稿内容</p>
+        <p>パスワード</p>
         <input name="password" type="password">
-        <div class="button_horizontally">
-          <button>保存</button>
-          <button>キャンセル</button>
-        </div>
+        <button>送信</button>
       </form>
     </div>
   </main>

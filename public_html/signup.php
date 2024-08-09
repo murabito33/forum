@@ -1,4 +1,7 @@
-<?php include("includes/header.php");?>
+<?php require_once("includes/header.php");
+$app = new Forum\Controller\Signup();
+$app->run();
+?>
 
   <main>
     <div class="wrapper">

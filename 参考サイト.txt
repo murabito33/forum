@@ -26,8 +26,14 @@ https://www.tairaengineer-note.com/php-data-sent-by-post-from-the-form/
 POST送信の判断
 https://1-notes.com/php-is-get-or-post/
 
+リダイレクト
+https://webukatu.com/wordpress/blog/39494/
 
 ユーザー作成
+https://manablog.org/php7-login/
+訓練校で作成したPHPファイル
+
+ログイン
 https://manablog.org/php7-login/
 訓練校で作成したPHPファイル
 
@@ -40,3 +46,21 @@ https://magazine.techacademy.jp/magazine/11585
 個人メモ
 ヘッダーでconfig.phpを読む
 →その先でautoload.php,functions.phpを読む
+
+
+$sql = '"INSERT INTO users (username,email,password) VALUES ("'.$username.'","'.$email.'","'.$password.'")';
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
+
+
+→SQLインジェクション対策
+$stmt = $this->db->prepare("INSERT INTO users (username,email,password,created,modified) VALUES (:username, :email, :password, :now(), :now())");
+    $res = $stmt->execute([
+      ':username' => $values['username'],
+      ':email' => $values['email'],
+      ':password' => password_hash($values['password'],PASSWORD_DEFAULT)
+    ]);
+→:usernameと:username => $values[username];
+
+
+

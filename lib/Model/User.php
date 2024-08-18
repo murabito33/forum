@@ -4,7 +4,7 @@ namespace Forum\lib\Model;
 class User extends \Forum\lib\Model {
   public function userCreate($values){
     $stmt = $this->db->prepare("INSERT INTO users (username,email,password,created,modified) VALUES (:username, :email, :password, now(), now())");
-    $res = $stmt->execute([
+    $result = $stmt->execute([
       ':username' => $values['user_name'],
       ':email' => $values['email'],
       //パスワードのハッシュ化
@@ -14,10 +14,18 @@ class User extends \Forum\lib\Model {
 
   public function userLogin($values){
     $stmt = $this->db->prepare("SELECT * FROM users WHERE email = :email");
-    $res = $stmt->execute([
+    $stmt->execute([
       ':email' => $values['email'],
-      // ':password' => password_hash($values['password'],PASSWORD_DEFAULT),
     ]);
-    var_dump($res);
+
+    // $stmt->setFetchMode(\PDO::FETCH_ASSOC);
+    $stmt->setFetchMode(\PDO::FETCH_CLASS,'stdClass');
+
+    $user = $stmt->fetch();
+
+    if(password_verify($values['password'], $user->password)){
+      var_dump('パス一致');
+      return $user;
+    }
   }
 }

@@ -7,5 +7,5 @@ define('DB_PASSWORD','');
 
 require_once(__DIR__ .'./../lib/Controller/functions.php');
 require_once (__DIR__ . './../config/autoload.php');
-
+session_start();
 

@@ -1,5 +1,5 @@
 <?php include("includes/header.php");?>
-
+<?php var_dump($_SESSION['me']);?>
   <main>
     <div class="main_wrapper">
       <div class="head_title">

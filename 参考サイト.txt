@@ -43,6 +43,8 @@ https://qiita.com/miku66/items/f3126380d3340f3d8a2b
 var_dump
 https://magazine.techacademy.jp/magazine/11585
 
+
+
 個人メモ
 ヘッダーでconfig.phpを読む
 →その先でautoload.php,functions.phpを読む
@@ -51,9 +53,8 @@ https://magazine.techacademy.jp/magazine/11585
 $sql = '"INSERT INTO users (username,email,password) VALUES ("'.$username.'","'.$email.'","'.$password.'")';
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
-
-
-→SQLインジェクション対策
+↓
+SQLインジェクション対策
 $stmt = $this->db->prepare("INSERT INTO users (username,email,password,created,modified) VALUES (:username, :email, :password, :now(), :now())");
     $res = $stmt->execute([
       ':username' => $values['username'],
@@ -63,4 +64,20 @@ $stmt = $this->db->prepare("INSERT INTO users (username,email,password,created,m
 →:usernameと:username => $values[username];
 
 
+fetch
+https://blog.senseshare.jp/fetch-mode.html
 
+$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass')について
+setFetchMode():
+結果セットの取得方法を指定するメソッドfetch()やfetchAll()などのメソッドが結果をどのように返すかを決定できる
+
+\PDO::FETCH_CLASS:
+PDOの定数で、結果の各行が指定されたクラスのオブジェクトとして返す。
+
+'stdClass':
+フェッチされたデータをstdClassのオブジェクトとして返すように指定。
+stdClassはPHPの標準クラスで、特別な機能を持たない基本的なクラス。
+
+まとめ
+fetch()またはfetchAll()メソッドを呼び出したとき、データベースから取得した各行がstdClassオブジェクトとして返される。このオブジェクトは、各列の値をプロパティとして持つ。
+SQLクエリの結果にusernameとemailという列がある場合、stdClassオブジェクトには$object->usernameと$object->emailというプロパティが自動的に設定される。

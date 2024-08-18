@@ -8,9 +8,9 @@ $app->run();
       <h1>ログイン</h1>
       <form action="" method="post">
         <p>メールアドレス</p>
-        <input name="email" type="text" value="<?php echo h(isset($_POST['email']) ? $_POST['email'] : ''); ?>" />
+        <input name="email" type="text" value="<?php echo isset($_POST['email']) ? h($_POST['email']) : ''; ?>" />
         <p>パスワード</p>
-        <input name="password" type="password" value= "<?php echo h(isset($_POST['password']) ? $_POST['password'] : '') ?>" />
+        <input name="password" type="password" value= "<?php echo isset($_POST['password']) ? h($_POST['password']) : '' ?>" />
         <button type="submit">送信</button>
       </form>
     </div>

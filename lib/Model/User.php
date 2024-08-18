@@ -1,7 +1,7 @@
 <?php
-namespace Forum\lib\Model;
+namespace Forum\Lib\Model;
 
-class User extends \Forum\lib\Model {
+class User extends \Forum\Lib\Model {
   public function userCreate($values){
     $stmt = $this->db->prepare("INSERT INTO users (username,email,password,created,modified) VALUES (:username, :email, :password, now(), now())");
     $result = $stmt->execute([

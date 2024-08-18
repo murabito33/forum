@@ -1,5 +1,5 @@
 <?php
-namespace Forum\lib\Controller;
+namespace Forum\Lib\Controller;
 
 class Login extends \Forum\Lib\Controller{
   public function run(){

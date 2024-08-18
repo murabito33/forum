@@ -1,5 +1,5 @@
 <?php require_once("./includes/header.php");
-$app = new Forum\Lib\Controller\login();
+$app = new Forum\Lib\Controller\Login();
 $app->run();
 ?>
 

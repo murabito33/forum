@@ -1,6 +1,6 @@
 <?php
 
-namespace Forum\lib;
+namespace Forum\Lib;
 class Controller{
 
   

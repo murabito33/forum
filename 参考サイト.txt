@@ -94,3 +94,13 @@ class ThreadIndex extends \Forum\Lib\Controller{
     return $threadModel->threadGet(); modelのthreadGet()メソッドが返すデータをcontrollerのrun()メソッドに返してる
   }
 }
+
+
+
+URLからidを取得する場合のサニタイズ
+$thread_id = filter_input(INPUT_GET, 'thread_id', FILTER_VALIDATE_INT);
+if ($thread_id === false) {
+    // 無効なthread_idが渡された場合のエラーハンドリング
+    echo "無効なスレッドIDです。";
+    exit;
+}

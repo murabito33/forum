@@ -3,7 +3,7 @@ namespace Forum\Lib\Model;
 
 class Thread extends \Forum\Lib\Model{
 public function threadGet(){
-  $stmt = $this->db->prepare("SELECT * from posts");
+  $stmt = $this->db->prepare("SELECT * from threads");
   $stmt->execute();
   $stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
   $threads = $stmt->fetchAll();
@@ -12,7 +12,7 @@ public function threadGet(){
 }
 
   public function threadCreate($values){
-    $stmt = $this->db->prepare("INSERT INTO posts (user_id, title, contents, image, created, updated) VALUES (:user_id, :title, :contents, :image, now(), now())");
+    $stmt = $this->db->prepare("INSERT INTO threads (user_id, title, contents, image, created, updated) VALUES (:user_id, :title, :contents, :image, now(), now())");
     $stmt->execute([
       ':user_id' => $values['user_id'],
       ':title' => $values['title'],

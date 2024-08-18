@@ -81,3 +81,16 @@ stdClassはPHPの標準クラスで、特別な機能を持たない基本的な
 まとめ
 fetch()またはfetchAll()メソッドを呼び出したとき、データベースから取得した各行がstdClassオブジェクトとして返される。このオブジェクトは、各列の値をプロパティとして持つ。
 SQLクエリの結果にusernameとemailという列がある場合、stdClassオブジェクトには$object->usernameと$object->emailというプロパティが自動的に設定される。
+
+<?php
+namespace Forum\Lib\Controller;
+
+class ThreadIndex extends \Forum\Lib\Controller{
+  public function run(){
+    return $this->threadGet();  //controllerのthreadGet()メソッドが返すデータをindex.phpに返してる
+  }
+  protected function threadGet(){
+    $threadModel = new \Forum\Lib\Model\Thread();
+    return $threadModel->threadGet(); modelのthreadGet()メソッドが返すデータをcontrollerのrun()メソッドに返してる
+  }
+}

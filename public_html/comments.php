@@ -1,43 +1,48 @@
 <?php include("includes/header.php");
 $thread_id = isset($_GET['thread_id']) ? $_GET['thread_id'] : null;
-var_dump($thread_id);
 $app = new Forum\Lib\Controller\CommentCreate();
 $app->run();
+
+$threadGet = new Forum\Lib\Controller\ThreadGet();
+$thread = $threadGet->threadGet($thread_id);
+
+$commentGet = new Forum\Lib\Controller\CommentGet();
+$comments = $commentGet->commentGet($thread_id);
 ?>
 
   <main>
     <div class="main_wrapper">
       <div class="head_title">
-        <h1>スレッド一覧</h1>
+        <h1>コメント一覧</h1>
       </div>
       <div class="thread">
-        <p>タイトル:</p>
-        <p>名前:</p>
-        <p>こんにちは、いい天気ですね</p>
-        <p>投稿日時:</p>
+        <p>タイトル:<?= $thread->title ?></p>
+        <p>名前:<?= $thread->username ?></p>
+        <p><?= $thread->contents ?></p>
+        <p>投稿日時:<?= $thread->created?></p>
         <div class="button_horizontally">
-          <button>編集</button>
-          <button>削除</button>
+          <?php if($thread->user_id == $_SESSION['me']->id):?>
+            <button>編集</button>
+            <button>削除</button>
+          <?php endif; ?>
         </div>
         <div class="comment_head">
           <h2>コメント一覧</h2>
         </div>
-        <div class="comment">
-          <p>No.1</p>
-          <p>名前:</p>
-          <p>追記です。</p>
-          <p>投稿日時:</p>
-          <div class="button_horizontally">
-            <button>編集</button>
-            <button>削除</button>
+        <?php foreach ($comments as $index => $comment): ?>
+          <div class="comment">
+            <p>No.<?= $index + 1 ?></p>
+            <p>名前:<?= $comment->username ?></p>
+            <p><?= $comment->comment ?></p>
+            <p>投稿日時: <?= $comment->created ?></p>
+            <div class="button_horizontally">
+            <?php if($comment->user_id == $_SESSION['me']->id):?>
+              <button>編集</button>
+              <button>削除</button>
+            <?php endif; ?>
+            </div>
           </div>
-        </div>
-        <div class="comment">
-          <p>No.2</p>
-          <p>名前:</p>
-          <p>他人のコメントです。</p>
-          <p>投稿日時:</p>
-        </div>
+        <?php endforeach; ?>
       </div>
 
       <h1>新規コメント作成</h1>
@@ -49,7 +54,6 @@ $app->run();
         <input name="thread_id" type="hidden" value="<?= h($thread_id)?>">        
         <div class="button_horizontally">
           <button>保存</button>
-          <button type="button" onclick="location.href='index.php'">キャンセル</button>
         </div>
       </form>
     </div>

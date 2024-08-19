@@ -13,10 +13,10 @@ $threads = $app->run();
       <?php foreach($threads as $thread): ?>
       <div class="thread">
         <p>タイトル:<?= $thread->title ?></p>
-        <p>名前:<?= $thread->user_id?></p>
-        <p><?= $thread->contents?></p>
-        <p>投稿日時:<?= $thread->created?></p>
-        <a href="./comments.php/?thread_id=<?= $thread->user_id?>">コメントを表示(2)</a>
+        <p>名前:<?= $thread->user_id ?></p>
+        <p><?= $thread->contents ?></p>
+        <p>投稿日時:<?= $thread->created ?></p>
+        <a href="./comments.php/?thread_id=<?= $thread->user_id ?>">コメントを表示(2)</a>
         <button>編集</button>
         <button>削除</button>
       </div>

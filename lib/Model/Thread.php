@@ -2,13 +2,24 @@
 namespace Forum\Lib\Model;
 
 class Thread extends \Forum\Lib\Model{
-public function threadGet(){
-  $stmt = $this->db->prepare("SELECT * from threads");
+public function threadAllGet(){
+  $stmt = $this->db->prepare("SELECT * FROM threads");
   $stmt->execute();
   $stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
   $threads = $stmt->fetchAll();
 
   return $threads;
+}
+
+public function threadGet($values){
+  $stmt = $this->db->prepare("SELECT threads.user_id, threads.title, threads.contents, threads.image, threads.created, users.username FROM threads JOIN users ON threads.user_id = users.id WHERE threads.id = :thread_id");
+  $stmt->execute([
+    ':thread_id' => $values['thread_id']
+  ]);
+  $stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
+  $thread = $stmt->fetch();
+
+  return $thread;
 }
 
   public function threadCreate($values){

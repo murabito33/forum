@@ -40,9 +40,17 @@ https://manablog.org/php7-login/
 form
 https://qiita.com/miku66/items/f3126380d3340f3d8a2b
 
+if
+https://www.flatflag.nir87.com/if-257
+
 var_dump
 https://magazine.techacademy.jp/magazine/11585
 
+foreach $comments as $index => $comment
+https://webukatu.com/wordpress/blog/25043/
+
+URLからthread_idを取得
+訓練校で作成したPHPファイル
 
 
 個人メモ

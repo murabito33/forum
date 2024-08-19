@@ -40,9 +40,17 @@ https://manablog.org/php7-login/
 form
 https://qiita.com/miku66/items/f3126380d3340f3d8a2b
 
+if
+https://www.flatflag.nir87.com/if-257
+
 var_dump
 https://magazine.techacademy.jp/magazine/11585
 
+foreach $comments as $index => $comment
+https://webukatu.com/wordpress/blog/25043/
+
+URLからthread_idを取得
+訓練校で作成したPHPファイル
 
 
 個人メモ
@@ -93,4 +101,14 @@ class ThreadIndex extends \Forum\Lib\Controller{
     $threadModel = new \Forum\Lib\Model\Thread();
     return $threadModel->threadGet(); modelのthreadGet()メソッドが返すデータをcontrollerのrun()メソッドに返してる
   }
+}
+
+
+
+URLからidを取得する場合のサニタイズ
+$thread_id = filter_input(INPUT_GET, 'thread_id', FILTER_VALIDATE_INT);
+if ($thread_id === false) {
+    // 無効なthread_idが渡された場合のエラーハンドリング
+    echo "無効なスレッドIDです。";
+    exit;
 }

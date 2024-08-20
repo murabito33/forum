@@ -11,6 +11,7 @@ require_once (__DIR__ . '/../../config/config.php') //__DIR__ 存在するディ
 </head>
 <body>
   <header>
+    <p><a href="./index.php">スレッド一覧へ</a></p>
     <p><?= $_SESSION['me']->username ?></p>
     <p>ログアウト</p>
   </header>

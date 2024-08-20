@@ -22,10 +22,6 @@ $comments = $commentGet->commentAllGet($thread_id);
         <p><?= $thread->contents ?></p>
         <p>投稿日時:<?= $thread->created?></p>
         <div class="button_horizontally">
-          <?php if($thread->user_id == $_SESSION['me']->id):?>
-            <button>編集</button>
-            <button>削除</button>
-          <?php endif; ?>
         </div>
         <div class="comment_head">
           <h2>コメント一覧</h2>
@@ -38,8 +34,8 @@ $comments = $commentGet->commentAllGet($thread_id);
             <p>投稿日時: <?= $comment->created ?></p>
             <div class="button_horizontally">
             <?php if($comment->user_id == $_SESSION['me']->id):?>
-              <button type = "button" onclick="location.href='./comment_edit.php?comment_id=<?= $comment->id?>'">編集</button>
-              <button type = "button" onclick="location.href='./comment_delete.php?comment_id=<?= $comment->id?>'">削除</button>
+              <button type="button" onclick="location.href='./comment_edit.php?comment_id=<?= $comment->id?>'">編集</button>
+              <button type="button" onclick="location.href='./comment_delete.php?comment_id=<?= $comment->id?>'">削除</button>
             <?php endif; ?>
             </div>
           </div>

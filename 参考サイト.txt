@@ -112,3 +112,10 @@ if ($thread_id === false) {
     echo "無効なスレッドIDです。";
     exit;
 }
+
+
+やること
+var_dump削除
+バリデーション
+エラー表示
+urlからのidをサニタイズ

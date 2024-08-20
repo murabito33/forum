@@ -3,7 +3,7 @@ namespace Forum\Lib\Controller;
 
 class ThreadIndex extends \Forum\Lib\Controller{
   public function run(){
-    return $this->threadAllGet();//threadGet()メソッドが返すデータをindex.phpに返してる
+    return $this->threadAllGet();
   }
   protected function threadAllGet(){
     $threadModel = new \Forum\Lib\Model\Thread();

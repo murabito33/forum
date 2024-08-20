@@ -2,7 +2,7 @@
 $app = new Forum\Lib\Controller\ThreadIndex();
 $threads = $app->run();
 
-$commentGet = new Forum\Lib\Controller\CommentGet();
+$commentGet = new Forum\Lib\Controller\CommentAllGet();
 
 // $comments = $commentGet->commentGet($thread_id);
 ?>
@@ -20,7 +20,7 @@ $commentGet = new Forum\Lib\Controller\CommentGet();
         <p>名前:<?= $thread->username ?></p>
         <p><?= $thread->contents ?></p>
         <p>投稿日時:<?= $thread->created ?></p>
-        <a href="./comments.php/?thread_id=<?= $thread->id ?>">コメントを表示(<?= count($commentGet->commentGet($thread->id))?>)</a>
+        <a href="./comments.php/?thread_id=<?= $thread->id ?>">コメントを表示(<?= count($commentGet->commentAllGet($thread->id))?>)</a>
         <?php if($thread->user_id == $_SESSION['me']): ?>
           <button>編集</button>
           <button>削除</button>

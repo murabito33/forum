@@ -31,4 +31,36 @@ public function threadGet($values){
       ':image' => $values['image'],
     ]);
   }
+
+  public function threadUpdate($values){
+    $stmt = $this->db->prepare("UPDATE threads SET title = :title, contents = :contents, image=:image, updated = now() WHERE id = :thread_id ");
+    $stmt->execute([
+      ':thread_id' => $values['thread_id'],
+      ':title' => $values['title'],
+      ':contents' => $values['contents'],
+      ':image' => $values['image'],
+    ]);
+  }
+
+  public function threadDelete($values){
+    try{
+      $this->db->beginTransaction();
+
+      $stmt = $this->db->prepare("DELETE FROM threads WHERE id = :thread_id");
+      $stmt->execute([
+        ':thread_id' => $values,
+      ]);
+      
+      $stmt = $this->db->prepare("DELETE FROM comments WHERE thread_id = :thread_id");
+      $stmt->execute([
+        ':thread_id' => $values,
+      ]);
+      
+      $this->db->commit();
+    } catch (\PDOException ){
+      $this->db->rollBack();
+
+    }
+
+  }
 }

@@ -6,7 +6,7 @@ class CommentGet extends \Forum\Lib\Controller{
   public function commentGet($values){
     $commentModel = new \Forum\Lib\Model\Comment();
     return $commentModel->commentGet([
-      'thread_id' => $values,
+      'comment_id' => $values,
     ]);
   }
 }

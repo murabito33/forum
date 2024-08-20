@@ -20,7 +20,7 @@ $app->run();
 
         <div class="button_horizontally">
           <button>保存</button>
-          <button type="button" onclick="location.href='index.php'">キャンセル</button>
+          <button type="button" onclick="location.href='./../index.php'">キャンセル</button>
         </div>
       </form>
     </div>

@@ -1,6 +1,6 @@
 <?php 
   include("includes/header.php");
-  $thread_id = isset($_GET['thread_id']) ? $_GET['thread_id'] : null;
+  $thread_id = isset($_GET['thread_id']) ? h($_GET['thread_id']) : null;
   $threadGet = new Forum\Lib\Controller\ThreadGet();
   $thread = $threadGet->threadGet($thread_id);
   $threadDelete = new Forum\Lib\Controller\ThreadDelete();
@@ -16,6 +16,7 @@
         <p>投稿内容</p>
         <?= $thread->contents; ?>
         <input name="type" type="hidden" value="thread_delete">
+        <div class="button_horizontally">
           <button>削除</button>
           <button type="button" onclick="history.back();">キャンセル</button>
         </div>

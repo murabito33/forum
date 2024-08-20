@@ -13,6 +13,7 @@ $app->run();
         <input name="password" type="password" value= "<?php echo isset($_POST['password']) ? h($_POST['password']) : '' ?>" />
         <button type="submit">送信</button>
       </form>
+      <p><a href="./signup.php">会員登録はこちら</a></p>
     </div>
   </main>
 </body>

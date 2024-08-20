@@ -1,5 +1,5 @@
 <?php include("includes/header.php");
-$thread_id = isset($_GET['thread_id']) ? $_GET['thread_id'] : null;
+$thread_id = isset($_GET['thread_id']) ? h($_GET['thread_id']) : null;
 $app = new Forum\Lib\Controller\CommentCreate();
 $app->run();
 

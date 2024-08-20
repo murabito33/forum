@@ -1,10 +1,8 @@
 <?php 
 include("includes/header.php");
-$comment_id = isset($_GET['comment_id']) ? $_GET['comment_id'] : null;
-var_dump($comment_id);
+$comment_id = isset($_GET['comment_id']) ? h($_GET['comment_id']) : null;
 $commentGet = new Forum\Lib\Controller\CommentGet();
 $comment = $commentGet->commentGet($comment_id);
-var_dump($comment);
 $commentDelete = new Forum\Lib\Controller\CommentDelete();
 $commentDelete->commentDelete($comment_id);
 

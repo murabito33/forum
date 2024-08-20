@@ -1,6 +1,6 @@
 <?php 
 include("includes/header.php");
-$comment_id = isset($_GET['comment_id']) ? $_GET['comment_id'] : null;
+$comment_id = isset($_GET['comment_id']) ? h($_GET['comment_id']) : null;
 
 $commentGet = new Forum\Lib\Controller\CommentGet();
 $comment = $commentGet->commentGet($comment_id);

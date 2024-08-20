@@ -17,7 +17,7 @@ class ThreadCreate extends \Forum\Lib\Controller{
       'contents' => $_POST['contents'],
       'image' => $_POST['image'],
     ]);
-    // header('Location:'.'./index.php');
-    // exit();
+    header('Location:'.'./index.php');
+    exit();
   }
 }

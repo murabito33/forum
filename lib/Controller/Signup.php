@@ -10,13 +10,15 @@ class Signup extends \Forum\Lib\Controller {
 
   protected function userCreate(){
     $userModel = new \Forum\Lib\Model\User();
-    $user = $userModel->userCreate([
-      'user_name' => $_POST['user_name'],
-      'email' => $_POST['email'],
-      'password' => $_POST['password'],
-    ]);
-    //ユーザー登録したらログインするようにする
-    header('Location:./login.php');
-    exit();
+    if($_POST['user_name']==null || $_POST['email']==null || $_POST['password']==null){
+      var_dump('バリデーション未実装');
+    }else{
+      $user = $userModel->userCreate([
+        'user_name' => $_POST['user_name'],
+        'email' => $_POST['email'],
+        'password' => $_POST['password'],
+      ]);
+        //ユーザー登録したらログインするようにする
+    }
     }
   }

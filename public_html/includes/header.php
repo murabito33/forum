@@ -1,4 +1,6 @@
-<?php require_once (__DIR__ . '/../../config/config.php') //__DIR__ 存在するディレクトリのパスを返す。/forum/～/header.php?> 
+<?php 
+require_once (__DIR__ . '/../../config/config.php') //__DIR__ 存在するディレクトリのパスを返す。/forum/～/header.php
+?> 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -9,6 +11,6 @@
 </head>
 <body>
   <header>
-    <p>名前</p>
+    <p><?= $_SESSION['me']->username ?></p>
     <p>ログアウト</p>
   </header>

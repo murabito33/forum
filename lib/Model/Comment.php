@@ -38,5 +38,12 @@ namespace Forum\Lib\Model;
         ':comment' => $values['comment'],
       ]);
     }
+
+    public function commentDelete($values){
+      $stmt = $this->db->prepare("DELETE FROM comments WHERE id = :comment_id ");
+      $stmt->execute([
+        ':comment_id' => $values,
+      ]);
+    }
 }
 ?>

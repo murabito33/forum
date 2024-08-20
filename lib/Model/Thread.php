@@ -3,7 +3,7 @@ namespace Forum\Lib\Model;
 
 class Thread extends \Forum\Lib\Model{
 public function threadAllGet(){
-  $stmt = $this->db->prepare("SELECT * FROM threads");
+  $stmt = $this->db->prepare("SELECT threads.id, threads.user_id, threads.title, threads.contents, threads.image, threads.created, users.username FROM threads JOIN users ON threads.user_id = users.id");
   $stmt->execute();
   $stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
   $threads = $stmt->fetchAll();

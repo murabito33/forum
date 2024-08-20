@@ -6,8 +6,8 @@ $app->run();
 $threadGet = new Forum\Lib\Controller\ThreadGet();
 $thread = $threadGet->threadGet($thread_id);
 
-$commentGet = new Forum\Lib\Controller\CommentGet();
-$comments = $commentGet->commentGet($thread_id);
+$commentGet = new Forum\Lib\Controller\CommentAllGet();
+$comments = $commentGet->commentAllGet($thread_id);
 ?>
 
   <main>
@@ -37,7 +37,7 @@ $comments = $commentGet->commentGet($thread_id);
             <p>投稿日時: <?= $comment->created ?></p>
             <div class="button_horizontally">
             <?php if($comment->user_id == $_SESSION['me']->id):?>
-              <button>編集</button>
+              <button type = "button" onclick="location.href='./../comment_edit.php?comment_id=<?= $comment->id?>'">編集</button>
               <button>削除</button>
             <?php endif; ?>
             </div>

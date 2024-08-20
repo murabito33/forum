@@ -11,8 +11,8 @@ class Login extends \Forum\Lib\Controller{
   protected function userLogin(){
     $userModel = new \Forum\Lib\Model\User();
 
-    if($_POST['password'] == null){
-      var_dump('パスnull');
+    if($_POST['password'] == null || $_POST['email'] == null){
+      var_dump('バリデーション未実装');
     }else{
       $user = $userModel->userLogin([
         'email' => $_POST['email'],
@@ -22,11 +22,10 @@ class Login extends \Forum\Lib\Controller{
       if($user == true){
         session_regenerate_id(true);
         $_SESSION['me'] = $user;
-        var_dump($_SESSION['me']->username);
         header('Location: '. './index.php');
         exit();
       } else{
-        var_dump('メールアドレス、またはパスワードが違います');
+        var_dump('メール、パスワード不一致メッセージ未実装');
       }
     }
   }

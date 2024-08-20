@@ -1,5 +1,4 @@
 <?php include("includes/header.php");
-// require_once __DIR__ . './ThreadCreate.php';
 $app = new Forum\Lib\Controller\ThreadCreate();
 $app->run();
 ?>

@@ -15,6 +15,7 @@ $app->run();
         <input name="password" type="password"/>
         <button type="submit">送信</button>
       </form>
+      <p><a href="./login.php">ログインはこちら</a></p>
     </div>
   </main>
 </body>

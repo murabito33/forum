@@ -33,26 +33,30 @@ $comments = $commentGet->commentAllGet($thread_id);
             <p><?= $comment->comment ?></p>
             <p>投稿日時: <?= $comment->created ?></p>
             <div class="button_horizontally">
-            <?php if($comment->user_id == $_SESSION['me']->id):?>
-              <button type="button" onclick="location.href='./comment_edit.php?comment_id=<?= $comment->id?>'">編集</button>
-              <button type="button" onclick="location.href='./comment_delete.php?comment_id=<?= $comment->id?>'">削除</button>
+            <?php if(isset($_SESSION['me']) == true): ?>
+              <?php if($comment->user_id == $_SESSION['me']->id):?>
+                <button type="button" onclick="location.href='./comment_edit.php?comment_id=<?= $comment->id?>'">編集</button>
+                <button type="button" onclick="location.href='./comment_delete.php?comment_id=<?= $comment->id?>'">削除</button>
+              <?php endif; ?>
             <?php endif; ?>
             </div>
           </div>
         <?php endforeach; ?>
       </div>
 
+      <?php if(isset($_SESSION['me']) == true): ?>
       <h1>新規コメント作成</h1>
       
-      <form action="" method="post">
-        <p>名前:<?= $_SESSION['me']->username?></p>
-        <p>投稿内容</p>
-        <input name="comment" type="text" value="<?php echo isset($_POST['contents']) ? h($_POST['contents']) : '';?>">
-        <input name="thread_id" type="hidden" value="<?= h($thread_id)?>">        
-        <div class="button_horizontally">
-          <button>保存</button>
-        </div>
-      </form>
+        <form action="" method="post">
+          <p>名前:<?= $_SESSION['me']->username?></p>
+          <p>投稿内容</p>
+          <input name="comment" type="text" value="<?php echo isset($_POST['contents']) ? h($_POST['contents']) : '';?>">
+          <input name="thread_id" type="hidden" value="<?= h($thread_id)?>">        
+          <div class="button_horizontally">
+            <button>保存</button>
+          </div>
+        </form>
+      <?php endif; ?>
     </div>
   </main>
 </body>
